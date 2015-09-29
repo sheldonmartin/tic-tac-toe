@@ -1,6 +1,13 @@
 require_relative '../src/board'
 
 describe Board do
+  describe "#to_s" do
+    it "should return a board as a string" do
+      board = Board.new
+      expect(board.to_s).to eq("-------\n| | | |\n-------\n| | | |\n-------\n| | | |\n-------")
+    end
+  end
+
   describe "#possible_moves" do
     it "should return a list of possible moves" do
       board = Board.new

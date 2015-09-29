@@ -4,7 +4,7 @@ describe Board do
   describe "#to_s" do
     it "should return a board as a string" do
       board = Board.new
-      expect(board.to_s).to eq("-------\n| | | |\n-------\n| | | |\n-------\n| | | |\n-------")
+      expect(board.to_s).to eq("3| | | |\n2| | | |\n1| | | |\n  a b c")
     end
   end
 

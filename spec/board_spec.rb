@@ -8,6 +8,15 @@ describe Board do
     end
   end
 
+  describe "#mark_location" do
+    it "should mark the board at the correct location" do
+      board = Board.new
+      board.mark_location('b3', 'X')
+
+      expect(board.to_s).to eq("3| |X| |\n2| | | |\n1| | | |\n  a b c")
+    end
+  end
+
   describe "#possible_moves" do
     it "should return a list of possible moves" do
       board = Board.new

@@ -21,5 +21,12 @@ describe Board do
     it "should return a list of possible moves" do
       expect(board.possible_moves).to eq(['a3','b3', 'c3', 'a2','b2', 'c2', 'a1','b1', 'c1'])
     end
+
+    context "after a location has been marked" do
+      it "should return a list of possible moves" do
+        board.mark_location('b3', 'X')
+        expect(board.possible_moves).to eq(['a3', 'c3', 'a2','b2', 'c2', 'a1','b1', 'c1'])
+      end      
+    end
   end
 end

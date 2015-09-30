@@ -1,5 +1,5 @@
 Struct.new("Coordinate", :x, :y)
-
+require 'pry'
 class Board
   attr_reader :board, :number_of_rows, :number_of_cols, :winning_number_of_symbols
 
@@ -49,26 +49,31 @@ class Board
   end
 
   def winner
-    horizontal_winner = find_horizontal_winner
+    horizontal_winner = find_winner(board)
+    vertical_winner = find_winner(board.transpose)
 
     return horizontal_winner if horizontal_winner
+    return vertical_winner if vertical_winner
 
     return nil
   end
 
-  private 
+  private
 
-  def find_horizontal_winner
+  def find_winner(board)
     board.each do |row|
-      return find_winner(row)
+      result = check_line(row)
+      return result if result
     end
+
+    return nil
   end
 
-  def find_winner(line)
-    line.delete(" ")
+  def check_line(line)
+    filtered_line = line.select { |element| element != " " }
 
-    if line.length == winning_number_of_symbols && line.uniq.length == 1
-      return line[0]
+    if filtered_line.length == winning_number_of_symbols && filtered_line.uniq.length == 1
+      return filtered_line[0]
     end
   end
 

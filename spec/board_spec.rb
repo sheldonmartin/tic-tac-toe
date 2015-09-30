@@ -29,4 +29,18 @@ describe Board do
       end      
     end
   end
+
+  describe "#winner" do
+    it "should return nil if there is no winner" do 
+      expect(board.winner).to be_nil
+    end
+
+    it "should return the winner of the game" do
+      board.mark_location('a3', 'X')
+      board.mark_location('b3', 'X')
+      board.mark_location('c3', 'X')
+
+      expect(board.winner).to eq('X')
+    end
+  end
 end

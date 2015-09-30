@@ -66,5 +66,39 @@ describe Board do
         expect(board.winner).to eq('O')
       end      
     end
+
+    context "when board is filled diagonally" do
+      it "should return nil if there is no winner" do
+        board.mark_location('a1', 'O')
+        board.mark_location('b2', 'O')
+        board.mark_location('c3', 'X')
+
+        expect(board.winner).to be_nil
+      end
+
+      it "should return the winner of the game" do
+        board.mark_location('a1', 'O')
+        board.mark_location('b2', 'O')
+        board.mark_location('c3', 'O')
+
+        expect(board.winner).to eq('O')
+      end
+
+      it "should return nil if there is no winner" do
+        board.mark_location('a3', 'O')
+        board.mark_location('b2', 'O')
+        board.mark_location('c1', 'X')
+
+        expect(board.winner).to be_nil
+      end
+
+      it "should return the winner of the game" do
+        board.mark_location('a3', 'O')
+        board.mark_location('b2', 'O')
+        board.mark_location('c1', 'O')
+
+        expect(board.winner).to eq('O')
+      end
+    end
   end
 end

@@ -1,7 +1,7 @@
 Struct.new("Coordinate", :x, :y)
 
 class Board
-  attr_reader :board, :number_of_rows, :number_of_cols
+  attr_reader :board, :number_of_rows, :number_of_cols, :winning_number_of_symbols
 
   @@KEY = {
     "a3" => [0,0],
@@ -18,6 +18,7 @@ class Board
   def initialize
     @number_of_rows = 3
     @number_of_cols = 3
+    @winning_number_of_symbols = 3
     @board = Array.new(number_of_rows){Array.new(number_of_cols){" "}}
   end
 
@@ -55,15 +56,20 @@ class Board
     return nil
   end
 
-  private
+  private 
 
   def find_horizontal_winner
     board.each do |row|
-      row.delete(" ")
-      return row[0] if row.length == number_of_rows
+      return find_winner(row)
     end
+  end
 
-    return nil
+  def find_winner(line)
+    line.delete(" ")
+
+    if line.length == winning_number_of_symbols && line.uniq.length == 1
+      return line[0]
+    end
   end
 
   def empty_cell(key)
@@ -76,3 +82,4 @@ class Board
     Struct::Coordinate.new(@@KEY[key][0], @@KEY[key][1])
   end
 end
+                                                                                                                                                                                                                                                                                                                                                                                            

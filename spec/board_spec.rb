@@ -31,7 +31,11 @@ describe Board do
   end
 
   describe "#winner" do
-    it "should return nil if there is no winner" do 
+    it "should return nil if there is no winner" do
+      board.mark_location('a3', 'X')
+      board.mark_location('b3', 'O')
+      board.mark_location('c3', 'X')
+
       expect(board.winner).to be_nil
     end
 

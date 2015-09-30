@@ -31,20 +31,40 @@ describe Board do
   end
 
   describe "#winner" do
-    it "should return nil if there is no winner" do
-      board.mark_location('a3', 'X')
-      board.mark_location('b3', 'O')
-      board.mark_location('c3', 'X')
+    context "when a row is filled" do
+      it "should return nil if there is no winner" do
+        board.mark_location('a3', 'X')
+        board.mark_location('b3', 'O')
+        board.mark_location('c3', 'X')
 
-      expect(board.winner).to be_nil
+        expect(board.winner).to be_nil
+      end
+
+      it "should return the winner of the game" do
+        board.mark_location('a3', 'X')
+        board.mark_location('b3', 'X')
+        board.mark_location('c3', 'X')
+
+        expect(board.winner).to eq('X')
+      end      
     end
 
-    it "should return the winner of the game" do
-      board.mark_location('a3', 'X')
-      board.mark_location('b3', 'X')
-      board.mark_location('c3', 'X')
+    context "when a column is filled" do
+      it "should return nil if there is no winner" do
+        board.mark_location('b3', 'O')
+        board.mark_location('b2', 'O')
+        board.mark_location('b1', 'X')
 
-      expect(board.winner).to eq('X')
+        expect(board.winner).to be_nil
+      end
+
+      it "should return the winner of the game" do
+        board.mark_location('b3', 'O')
+        board.mark_location('b2', 'O')
+        board.mark_location('b1', 'O')
+
+        expect(board.winner).to eq('X')
+      end      
     end
   end
 end

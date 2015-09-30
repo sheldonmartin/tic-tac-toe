@@ -1,5 +1,5 @@
 Struct.new("Coordinate", :x, :y)
-require 'pry'
+
 class Board
   attr_reader :board, :number_of_rows, :number_of_cols, :winning_number_of_symbols
 
@@ -51,12 +51,17 @@ class Board
   def winner
     horizontal_winner = find_winner(board)
     vertical_winner = find_winner(board.transpose)
+    diagonal_winner_top_to_bottom = find_diagonal_winner(board)
+    diagonal_winner_bottom_to_top = find_diagonal_winner(board.reverse)
 
     return horizontal_winner if horizontal_winner
     return vertical_winner if vertical_winner
+    return diagonal_winner_top_to_bottom if diagonal_winner_top_to_bottom
+    return diagonal_winner_bottom_to_top if diagonal_winner_bottom_to_top
 
     return nil
   end
+
 
   private
 
@@ -67,6 +72,14 @@ class Board
     end
 
     return nil
+  end
+
+  def find_diagonal_winner(board)
+    line = board.map.with_index do |row, index|
+      row[index]
+    end
+
+    return check_line(line)
   end
 
   def check_line(line)
@@ -87,4 +100,3 @@ class Board
     Struct::Coordinate.new(@@KEY[key][0], @@KEY[key][1])
   end
 end
-                                                                                                                                                                                                                                                                                                                                                                                            

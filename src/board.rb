@@ -1,5 +1,5 @@
 Struct.new("Coordinate", :x, :y)
-
+require 'pry'
 class Board
   attr_reader :board, :number_of_rows, :number_of_cols
 
@@ -25,6 +25,11 @@ class Board
     @@KEY.keys.select do |key|
       empty_cell(key)
     end
+  end
+
+  def mark_location(location, symbol)
+    c = coordinate(location)
+    board[c.x][c.y] = symbol
   end
 
   def to_s

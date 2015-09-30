@@ -33,17 +33,17 @@ describe Board do
   describe "#winner" do
     context "when a row is filled" do
       it "should return nil if there is no winner" do
-        board.mark_location('a3', 'X')
-        board.mark_location('b3', 'O')
-        board.mark_location('c3', 'X')
+        board.mark_location('a2', 'X')
+        board.mark_location('b2', 'O')
+        board.mark_location('c2', 'X')
 
         expect(board.winner).to be_nil
       end
 
       it "should return the winner of the game" do
-        board.mark_location('a3', 'X')
-        board.mark_location('b3', 'X')
-        board.mark_location('c3', 'X')
+        board.mark_location('a2', 'X')
+        board.mark_location('b2', 'X')
+        board.mark_location('c2', 'X')
 
         expect(board.winner).to eq('X')
       end      
@@ -63,7 +63,7 @@ describe Board do
         board.mark_location('b2', 'O')
         board.mark_location('b1', 'O')
 
-        expect(board.winner).to eq('X')
+        expect(board.winner).to eq('O')
       end      
     end
   end

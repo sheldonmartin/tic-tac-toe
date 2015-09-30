@@ -24,7 +24,7 @@ class Board
 
   def possible_moves
     @@KEY.keys.select do |key|
-      empty_cell(key)
+      empty_cell?(key)
     end
   end
 
@@ -77,7 +77,7 @@ class Board
     end
   end
 
-  def empty_cell(key)
+  def empty_cell?(key)
     c = coordinate(key)
 
     board[c.x][c.y] == " "

@@ -1,5 +1,5 @@
 Struct.new("Coordinate", :x, :y)
-require 'pry'
+
 class Board
   attr_reader :board, :number_of_rows, :number_of_cols
 
@@ -47,7 +47,24 @@ class Board
     board_string << "  a b c"
   end
 
+  def winner
+    horizontal_winner = find_horizontal_winner
+
+    return horizontal_winner if horizontal_winner
+
+    return nil
+  end
+
   private
+
+  def find_horizontal_winner
+    board.each do |row|
+      row.delete(" ")
+      return row[0] if row.length == number_of_rows
+    end
+
+    return nil
+  end
 
   def empty_cell(key)
     c = coordinate(key)

@@ -33,7 +33,7 @@ module View
     puts "Player '#{player}' wins the game!"
   end
 
-  def self.play_again?
+  def self.play_again
     puts "Would you like to play again? (type 'Y' or 'N')"
     gets.chomp
   end

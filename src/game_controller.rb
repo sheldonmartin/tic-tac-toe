@@ -1,7 +1,7 @@
 require_relative 'view'
 require_relative 'computer'
 
-class GameController  
+class GameController
   def initialize(board)
     @board = board
     @player_symbols = ['X', 'O']
@@ -29,13 +29,19 @@ class GameController
     computer = symbol == 'X' ? 'O' : 'X'
     players = [human, computer]
 
-    players.each do |player|
-      if player == human
-        human_move(player)
-      else
-        computer_move(player)
+    until board.winner
+      players.each do |player|
+        if player == human
+          human_move(player)
+        else
+          computer_move(player)
+        end
+
+        break if board.winner
       end
     end
+
+    View.announce_winner(board.winner)
   end
 
   def human_move(player)

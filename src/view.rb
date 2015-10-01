@@ -26,6 +26,10 @@ module View
   end
 
   def self.announce_move(move, player)
-    puts "Player #{player} moves on #{move}"
+    puts "Player '#{player}' moves on #{move}"
+  end
+
+  def self.announce_winner(player)
+    puts "Player '#{player}' wins the game!"
   end
 end

@@ -47,6 +47,14 @@ class Board
 
     return nil
   end
+
+  def reset
+    @board.map! do |row|
+      row.map! do |cell|
+        cell = ' '
+      end
+    end
+  end
   
   private
 

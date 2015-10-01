@@ -17,7 +17,15 @@ class GameController
 
     View.symbol_selection(symbol)
 
-    play(symbol)
+    play_again = true
+
+    while play_again
+      play(symbol)
+      play_again = View.play_again?.upcase == "Y"
+      board.reset
+    end
+
+    View.goodbye
   end
 
   private

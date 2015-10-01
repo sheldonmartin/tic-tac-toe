@@ -32,4 +32,13 @@ module View
   def self.announce_winner(player)
     puts "Player '#{player}' wins the game!"
   end
+
+  def self.play_again?
+    puts "Would you like to play again? (type 'Y' or 'N')"
+    gets.chomp
+  end
+
+  def self.goodbye
+    puts "Thank you for playing! Goodbye!"
+  end
 end

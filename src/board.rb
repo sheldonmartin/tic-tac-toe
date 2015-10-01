@@ -36,13 +36,15 @@ class Board
 
   def winner
     horizontal_winner = find_winner(board)
-    vertical_winner = find_winner(board.transpose)
-    diagonal_winner_top_to_bottom = find_diagonal_winner(board)
-    diagonal_winner_bottom_to_top = find_diagonal_winner(board.reverse)
-
     return horizontal_winner if horizontal_winner
+
+    vertical_winner = find_winner(board.transpose)
     return vertical_winner if vertical_winner
+
+    diagonal_winner_top_to_bottom = find_diagonal_winner(board)
     return diagonal_winner_top_to_bottom if diagonal_winner_top_to_bottom
+    
+    diagonal_winner_bottom_to_top = find_diagonal_winner(board.reverse)
     return diagonal_winner_bottom_to_top if diagonal_winner_bottom_to_top
 
     return nil

@@ -1,20 +1,6 @@
 Struct.new("Coordinate", :x, :y)
 
 class Board
-  attr_reader :board, :number_of_rows, :number_of_cols, :winning_number_of_symbols
-
-  @@KEY = {
-    "a3" => [0,0],
-    "b3" => [0,1],
-    "c3" => [0,2],
-    "a2" => [1,0],
-    "b2" => [1,1],
-    "c2" => [1,2],
-    "a1" => [2,0],
-    "b1" => [2,1],
-    "c1" => [2,2]
-  }
-
   def initialize
     @number_of_rows = 3
     @number_of_cols = 3
@@ -62,8 +48,29 @@ class Board
     return nil
   end
 
-
+  def reset
+    @board.map! do |row|
+      row.map! do |cell|
+        cell = ' '
+      end
+    end
+  end
+  
   private
+
+  attr_reader :board, :number_of_rows, :number_of_cols, :winning_number_of_symbols
+
+  @@KEY = {
+    "a3" => [0,0],
+    "b3" => [0,1],
+    "c3" => [0,2],
+    "a2" => [1,0],
+    "b2" => [1,1],
+    "c2" => [1,2],
+    "a1" => [2,0],
+    "b1" => [2,1],
+    "c1" => [2,2]
+  }
 
   def find_winner(board)
     board.each do |row|

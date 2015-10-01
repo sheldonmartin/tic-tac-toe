@@ -41,4 +41,8 @@ module View
   def self.goodbye
     puts "Thank you for playing! Goodbye!"
   end
+
+  def self.announce_tie
+    puts "It's a tie!"
+  end
 end

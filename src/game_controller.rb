@@ -37,7 +37,7 @@ class GameController
     computer = player_symbols.reject {|sym| sym == symbol}.first
     players = [human, computer]
 
-    until board.winner
+    until board.winner || board.possible_moves.empty?
       players.each do |player|
         if player == human
           human_move(player)
@@ -49,7 +49,11 @@ class GameController
       end
     end
 
-    View.announce_winner(board.winner)
+    if board.winner
+      View.announce_winner(board.winner)
+    else
+      View.announce_tie
+    end
   end
 
   def human_move(player)

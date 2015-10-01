@@ -34,7 +34,7 @@ class GameController
 
   def play(symbol)
     human = symbol
-    computer = symbol == 'X' ? 'O' : 'X'
+    computer = player_symbols.reject {|sym| sym == symbol}.first
     players = [human, computer]
 
     until board.winner

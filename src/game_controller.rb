@@ -9,7 +9,7 @@ class GameController
 
   def start
     View.introduction_message
-    symbol = ""
+    symbol = View.select_symbol.upcase
 
     until player_symbols.include?(symbol)
       symbol = View.select_symbol.upcase
